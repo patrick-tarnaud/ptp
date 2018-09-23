@@ -1,4 +1,5 @@
 // header background color
+//$header-bg-color:black;
 $header-bg-color:black;
 // menu color
 $menu-color: #959595;
@@ -7,9 +8,10 @@ $menu-hover-color: white;
 // header height
 $header-height: 50px;
 // header margin, used for left and right side
-$header-margin: 20px;
+$header-margin: 50px;
 
-// menu definition in horizontal form (not responsive)
+
+// menu definition in horizontal mode (not responsive)
 nav {
   background-color: $header-bg-color;
   position: fixed;
@@ -21,7 +23,8 @@ nav {
   }
   .logo {
     float:left;
-    font-size: 2em;
+    font-size: 1em;
+    letter-spacing: 2px;
     margin-left: $header-margin;
     a {
       color:$menu-hover-color;
@@ -51,7 +54,7 @@ nav {
 // Responsive mode
 // hamburger icon becomes visible and horizontal menu is hidden
 // when hamburger icon is clicked : responsive class is added to menu's classList by javascript code (header.js) and menu appears vertically
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .menu {
     a {
       display: none;

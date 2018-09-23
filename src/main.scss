@@ -1,6 +1,7 @@
 $body-bg-color:black;
 $body-color:white;
-$border-bg-color:#131313;
+$page-bg-color:#161616;
+$page-margin: 50px;
 
 body {  
   margin: 0;
@@ -10,5 +11,64 @@ body {
   color:$body-color;
   width:100%;
   height:100%;
+}
+
+#pages {
+  position: relative;
+  top:50px;
+  width: 100%;
+
+  #accueil {
+    top:0px;
+    min-height: 800px;
+    height:100%;
+    margin-left: $page-margin;
+    margin-right:  $page-margin;
+    background-color: $page-bg-color;
+  }
+
+  #portfolio {
+    top:0px;
+    min-height: 800px;
+    height:100%;
+    margin-left: $page-margin;
+    margin-right:  $page-margin;
+    background-color: $page-bg-color;
+  }
+
+  #evenements {
+    top:0px;
+    min-height: 800px;
+    height:100%;
+    margin-left: $page-margin;
+    margin-right:  $page-margin;
+    background-color: $page-bg-color;
+  }
+
+  #contact {
+    top:0px;
+    min-height: 800px;
+    height:100%;
+    margin-left: $page-margin;
+    margin-right:  $page-margin;
+    background-color: $page-bg-color;
+  }
+
+  #a-propos {
+    top:0px;
+    min-height: 800px;
+    height:100%;
+    margin-left: $page-margin;
+    margin-right:  $page-margin;
+    background-color: $page-bg-color;
+  }
+}
+
+div.page {
+  display: none;
+} 
+
+div.page.active {
+    display: block;
 }
 

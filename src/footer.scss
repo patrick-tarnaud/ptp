@@ -1,0 +1,22 @@
+// footer background color
+$footer-bg-color:black;
+// menu color
+$menu-color: #959595;
+// menu color when mouse over
+$menu-hover-color: white;
+// header height
+$footer-height: 50px;
+// header margin, used for left and right side
+$footer-margin: 50px;
+
+footer {
+  //position: fixed;
+  // position: static;
+  position: relative;
+  top:50px;
+  display: block;
+  background-color: $footer-bg-color;
+  height: $footer-height;
+  margin-left: $footer-margin;
+  margin-right: $footer-margin;
+}
