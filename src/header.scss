@@ -13,6 +13,7 @@ $header-margin: 50px;
 
 // menu definition in horizontal mode (not responsive)
 nav {
+  z-index: 3;
   background-color: $header-bg-color;
   position: fixed;
   width: 100%;
@@ -55,6 +56,7 @@ nav {
 // hamburger icon becomes visible and horizontal menu is hidden
 // when hamburger icon is clicked : responsive class is added to menu's classList by javascript code (header.js) and menu appears vertically
 @media screen and (max-width: 800px) {
+nav {
   .menu {
     a {
       display: none;
@@ -67,8 +69,10 @@ nav {
   .menu.responsive {
     float:none;
     clear: both;
+    background-color: $header-bg-color;
     position: relative;
     a {
+      margin-left: $header-margin;
       display: block;
     }
     a.hamburger {
@@ -77,4 +81,5 @@ nav {
       right: 0px;
     }
   }
+}
 }

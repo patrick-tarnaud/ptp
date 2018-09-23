@@ -13,4 +13,5 @@ hamburger.addEventListener('click', (e) => {
   } else {
     menu.classList.add('responsive')
   }
+  e.preventDefault();
 })

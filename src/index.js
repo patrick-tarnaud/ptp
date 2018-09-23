@@ -30,7 +30,7 @@ function showPage(pageId) {
  */
 function initialization() {
   // clicks on menu items display pages
-  let menuItems = document.querySelectorAll('nav a')
+  let menuItems = document.querySelectorAll('nav .menu-item')
   menuItems.forEach((menuItem) => menuItem.addEventListener('click', (e) => {
     let page = e.target.getAttribute('href')
     showPage(page)

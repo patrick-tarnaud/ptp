@@ -14,11 +14,13 @@ body {
 }
 
 #pages {
+  z-index: 1;
   position: relative;
   top:50px;
   width: 100%;
 
   #accueil {
+    z-index: 1;
     top:0px;
     min-height: 800px;
     height:100%;
@@ -28,6 +30,7 @@ body {
   }
 
   #portfolio {
+    z-index: 1;
     top:0px;
     min-height: 800px;
     height:100%;
