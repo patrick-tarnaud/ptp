@@ -12,46 +12,48 @@ $header-margin: 50px;
 
 
 // menu definition in horizontal mode (not responsive)
-nav {
-  z-index: 3;
-  background-color: $header-bg-color;
-  position: fixed;
-  width: 100%;
-  height: $header-height;
-  line-height: $header-height;
-  a {
-    text-decoration: none;
-  }
-  .logo {
-    float:left;
-    font-size: 1em;
-    letter-spacing: 2px;
-    margin-left: $header-margin;
+header {
+  nav {
+    top:0px;
+    z-index: 3;
+    background-color: $header-bg-color;
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    line-height: $header-height;
     a {
-      color:$menu-hover-color;
+      text-decoration: none;
     }
-  }
-  .menu {
-    float: right;  
-    display:block;
-    margin-right: $header-margin;
-    a {
-      font-size: 0.7em;
-      padding-left: 10px;
-      padding-right: 10px;
-      color:$menu-color;
-      &:hover {
-        color: $menu-hover-color;
+    .logo {
+      float:left;
+      font-size: 1em;
+      letter-spacing: 2px;
+      margin-left: $header-margin;
+      a {
+        color:$menu-hover-color;
       }
-    }  
-    .hamburger {
-      display: none;
-      font-size: 1.3em;
-      color:$menu-hover-color;
+    }
+    .menu {
+      float: right;  
+      display:block;
+      margin-right: $header-margin;
+      a {
+        font-size: 0.7em;
+        padding-left: 10px;
+        padding-right: 10px;
+        color:$menu-color;
+        &:hover {
+          color: $menu-hover-color;
+        }
+      }  
+      .hamburger {
+        display: none;
+        font-size: 1.3em;
+        color:$menu-hover-color;
+      }
     }
   }
 }
-
 // Responsive mode
 // hamburger icon becomes visible and horizontal menu is hidden
 // when hamburger icon is clicked : responsive class is added to menu's classList by javascript code (header.js) and menu appears vertically

@@ -13,65 +13,49 @@ body {
   height:100%;
 }
 
-#pages {
+.main-container {
   z-index: 1;
-  position: relative;
+  position: absolute;
   top:50px;
   width: 100%;
-
-  #accueil {
+  margin: 0px;
+  height:80%;
+  .page {
     z-index: 1;
     top:0px;
     min-height: 800px;
-    height:100%;
     margin-left: $page-margin;
     margin-right:  $page-margin;
     background-color: $page-bg-color;
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+
+  #accueil {
+
   }
 
   #portfolio {
-    z-index: 1;
-    top:0px;
-    min-height: 800px;
-    height:100%;
-    margin-left: $page-margin;
-    margin-right:  $page-margin;
-    background-color: $page-bg-color;
+
   }
 
   #evenements {
-    top:0px;
-    min-height: 800px;
-    height:100%;
-    margin-left: $page-margin;
-    margin-right:  $page-margin;
-    background-color: $page-bg-color;
+  
   }
 
   #contact {
-    top:0px;
-    min-height: 800px;
-    height:100%;
-    margin-left: $page-margin;
-    margin-right:  $page-margin;
-    background-color: $page-bg-color;
+ 
   }
 
   #a-propos {
-    top:0px;
-    min-height: 800px;
-    height:100%;
-    margin-left: $page-margin;
-    margin-right:  $page-margin;
-    background-color: $page-bg-color;
+ 
   }
-}
 
-div.page {
-  display: none;
-} 
-
-div.page.active {
-    display: block;
+  footer {
+    position: static;
+    height: 50px;
+  }
 }
 
