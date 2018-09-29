@@ -3,6 +3,9 @@
  * 
  * Application management
  */
+import Portfolio from '../portfolio/portfolio.js'
+import ModelApp from './model-app.js'
+
 
 export default class App {
 
@@ -15,6 +18,9 @@ export default class App {
   constructor() {
     this.initMenu()
     this.showPage('#accueil')
+    this.modelApp = new ModelApp()
+    this.portfolio = new Portfolio(document.querySelector('#portfolio'), this.modelApp)
+    console.debug(this.portfolio)
   }
 
   /**
@@ -22,7 +28,7 @@ export default class App {
  */
   hideAllPages() {
     let pages = document.querySelectorAll('.page')
-    pages.forEach((page) => page.classList.remove('active'))
+    pages.forEach(page => page.classList.remove('active'))
   }
 
   /**
@@ -35,6 +41,11 @@ export default class App {
     this.hideAllPages();
     let page = document.querySelector(pageId)
     page.classList.add('active')
+
+    // TODO
+    if (pageId == "#portfolio") {
+      this.portfolio.run()
+    }
   }
 
   /**
@@ -43,7 +54,6 @@ export default class App {
    * Link menu item to pages
    */
   initMenu() {
-
     // click on menu items displays pages
     let menuItems = document.querySelectorAll('nav .menu-item')
 

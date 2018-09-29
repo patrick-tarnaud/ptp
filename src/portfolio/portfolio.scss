@@ -1,0 +1,62 @@
+/**
+* Portfolio stylesheet
+* 
+* In normal mode (width> 1200px), portfolio has four columns to display images
+* 
+*/
+// width under portfolio is in three columns mode  
+$three-columns-width: 1200px;
+// width under portfolio is in two columns mode 
+$two-columns-width: 800px;
+// width under portfolio is in one column mode 
+$one-column-width: 600px;
+
+// display flex in row direction with wrap
+.portfolio-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  // columns
+  .portfolio-column {
+    flex: 24%;
+    max-width: 24%;
+    padding: 0px 4px;
+
+    img {
+      margin-top: 8px;
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+}
+
+// responsive mode : three columns
+@media screen and (max-width: $three-columns-width) {
+  .portfolio-row {
+    .portfolio-column {
+      flex: 32%;
+      max-width: 32%;
+    }
+  }
+}
+
+// responsive mode : two columns
+@media screen and (max-width: $two-columns-width) {
+  .portfolio-row {
+    .portfolio-column {
+      flex: 48%;
+      max-width: 48%;
+    }
+  }
+}
+
+// responsive mode : one column
+@media screen and (max-width: $one-column-width) {
+  .portfolio-row {
+    .portfolio-column {
+      flex: 98%;
+      max-width: 98%;
+    }
+  }
+}
