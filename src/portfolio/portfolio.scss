@@ -4,10 +4,8 @@
 * In normal mode (width> 1200px), portfolio has four columns to display images
 * 
 */
-// width under portfolio is in three columns mode  
-$three-columns-width: 1200px;
 // width under portfolio is in two columns mode 
-$two-columns-width: 800px;
+$two-columns-width: 1200px;
 // width under portfolio is in one column mode 
 $one-column-width: 600px;
 
@@ -27,16 +25,6 @@ $one-column-width: 600px;
       margin-top: 8px;
       vertical-align: middle;
       width: 100%;
-    }
-  }
-}
-
-// responsive mode : three columns
-@media screen and (max-width: $three-columns-width) {
-  .portfolio-row {
-    .portfolio-column {
-      flex: 32%;
-      max-width: 32%;
     }
   }
 }
