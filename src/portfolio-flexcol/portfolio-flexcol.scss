@@ -10,13 +10,13 @@ $two-columns-width: 1200px;
 $one-column-width: 600px;
 
 // display flex in row direction with wrap
-.portfolio-row {
+.portfolio-flexcol-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   // columns
-  .portfolio-column {
+  .portfolio-flexcol-column {
     flex: 24%;
     max-width: 24%;
     padding: 0px 4px;
@@ -31,8 +31,8 @@ $one-column-width: 600px;
 
 // responsive mode : two columns
 @media screen and (max-width: $two-columns-width) {
-  .portfolio-row {
-    .portfolio-column {
+  .portfolio-flexcol-row {
+    .portfolio-flexcol-column {
       flex: 48%;
       max-width: 48%;
     }
@@ -41,8 +41,8 @@ $one-column-width: 600px;
 
 // responsive mode : one column
 @media screen and (max-width: $one-column-width) {
-  .portfolio-row {
-    .portfolio-column {
+  .portfolio-flexcol-row {
+    .portfolio-flexcol-column {
       flex: 98%;
       max-width: 98%;
     }

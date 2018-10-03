@@ -3,7 +3,10 @@
  * 
  * The portfolio is organized in a flex row and four columns
  */
-export default class PortfolioView {
+// import scss
+import portfolio_flexcol_scss from "./portfolio-flexcol.scss"
+
+export default class PortfolioFlexcolView {
 
   /**
    * Constructor 
@@ -15,11 +18,11 @@ export default class PortfolioView {
     this.portfolioElement = portfolioElement
     this.modelApp = modelApp
     this.template = `
-    <div class='portfolio-row'>
-      <div id ='portfolio-col1' class='portfolio-column'></div> 
-      <div id ='portfolio-col2' class='portfolio-column'></div> 
-      <div id ='portfolio-col3' class='portfolio-column'></div> 
-      <div id ='portfolio-col4' class='portfolio-column'></div> 
+    <div class='portfolio-flexcol-row'>
+      <div id ='portfolio-flexcol-col1' class='portfolio-flexcol-column'></div> 
+      <div id ='portfolio-flexcol-col2' class='portfolio-flexcol-column'></div> 
+      <div id ='portfolio-flexcol-col3' class='portfolio-flexcol-column'></div> 
+      <div id ='portfolio-flexcol-col4' class='portfolio-flexcol-column'></div> 
     </div>
     `
   }
@@ -29,21 +32,19 @@ export default class PortfolioView {
     this.portfolioElement.innerHTML = this.template
 
     // get DOM node for row and columns
-    let row = document.querySelector('#portfolio-row')
+    let row = document.querySelector('.portfolio-flexcol-row')
     let col = []
     for (let i = 0; i < 4; i++) {
-      col[i] = document.querySelector('#portfolio-col' + (i + 1))
-      console.debug(col[i])
+      col[i] = document.querySelector('#portfolio-flexcol-col' + (i + 1))
     }
 
     let index = 0
     this.modelApp.portfolio.forEach(photo => {
       index = (index == 4) ? 0 : index
       let img = document.createElement('img')
-      img.setAttribute('src', '/assets/photos/' + photo.thumbnail.file)
+      img.setAttribute('src', '/assets/photos/' + photo.file)
       col[index].appendChild(img)
       index++
-      //console.log(photo.image.file)
     });
   }
 }

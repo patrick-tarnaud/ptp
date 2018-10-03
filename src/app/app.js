@@ -3,7 +3,8 @@
  * 
  * Application management
  */
-import Portfolio from '../portfolio/portfolio.js'
+import PortfolioFlexcol from '../portfolio-flexcol/portfolio-flexcol'
+import PortfolioFlexbox from '../portfolio-flexbox/portfolio-flexbox'
 import ModelApp from './model-app.js'
 
 
@@ -19,8 +20,8 @@ export default class App {
     this.initMenu()
     this.showPage('#accueil')
     this.modelApp = new ModelApp()
-    this.portfolio = new Portfolio(document.querySelector('#portfolio'), this.modelApp)
-    console.debug(this.portfolio)
+    this.portfolioFlexcol = new PortfolioFlexcol(document.querySelector('#portfolio-flexcol-page'), this.modelApp)
+    this.portfolioFlexbox = new PortfolioFlexbox(document.querySelector('#portfolio-flexbox-page'), this.modelApp)
   }
 
   /**
@@ -43,8 +44,11 @@ export default class App {
     page.classList.add('active')
 
     // TODO
-    if (pageId == "#portfolio") {
-      this.portfolio.run()
+    if (pageId == "#portfolio-flexcol-page") {
+      this.portfolioFlexcol.run()
+    }
+    if (pageId == "#portfolio-flexbox-page") {
+      this.portfolioFlexbox.run()
     }
   }
 

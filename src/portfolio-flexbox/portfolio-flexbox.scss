@@ -1,0 +1,13 @@
+
+.portfolio-flexbox-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+
+  img {
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 4px 4px;
+  }
+}

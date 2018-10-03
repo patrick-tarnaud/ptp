@@ -7,6 +7,6 @@ export default class PortfolioSvc {
   }
 
   findPhotos() {
-    return JSON.parse(data)
+    return data
   }
 }
