@@ -3,8 +3,7 @@
  * 
  * Application management
  */
-// import PortfolioFlexcol from '../portfolio-flexcol/portfolio-flexcol'
-// import PortfolioFlexbox from '../portfolio-flexbox/portfolio-flexbox'
+
 import PortfolioGrid from '../portfolio-grid/portfolio-grid'
 import ModelApp from './model-app.js'
 
@@ -19,11 +18,10 @@ export default class App {
    */
   constructor() {
     this.initMenu()
-    this.showPage('#accueil')
+    this.showPage('#home')
     this.modelApp = new ModelApp()
-    // this.portfolioFlexcol = new PortfolioFlexcol(document.querySelector('#portfolio-flexcol-page'), this.modelApp)
-    // this.portfolioFlexbox = new PortfolioFlexbox(document.querySelector('#portfolio-flexbox-page'), this.modelApp)
-    this.portfolioGrid = new PortfolioGrid(document.querySelector('#portfolio-grid-page'), this.modelApp)
+
+    this.portfolioGrid = new PortfolioGrid(document.querySelector('#portfolio'), this.modelApp)
   }
 
   /**
@@ -45,14 +43,7 @@ export default class App {
     let page = document.querySelector(pageId)
     page.classList.add('active')
 
-    // TODO
-    // if (pageId == "#portfolio-flexcol-page") {
-    //   this.portfolioFlexcol.run()
-    // }
-    // if (pageId == "#portfolio-flexbox-page") {
-    //   this.portfolioFlexbox.run()
-    // }
-    if (pageId == "#portfolio-grid-page") {
+    if (pageId == "#portfolio") {
       this.portfolioGrid.run()
     }
   }

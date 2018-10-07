@@ -55,7 +55,7 @@ export default class PortfolioGridView {
     Array.from(gridItems).forEach(gridItem => {
       img = gridItem.querySelector('img')
 
-      const rowSpan = Math.ceil(img.offsetHeight / (rowSize + rowGap))
+      const rowSpan = Math.ceil((img.offsetHeight + rowGap) / (rowSize + rowGap))
       gridItem.style.setProperty("--row-span", rowSpan)
     })
   }
