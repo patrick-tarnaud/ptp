@@ -1,3 +1,7 @@
+/**
+* Portfolio grid stylesheet
+*/
+
 .portfolio-grid {
   display: grid;
   grid-gap: 4px;
@@ -12,8 +16,6 @@
       border-radius: 5px;
       object-fit: cover;
     }
-
-
   }
 }
 

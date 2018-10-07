@@ -1,7 +1,7 @@
 /**
  * Portfolio view management
  * 
- * The portfolio is organized in a flex row and four columns
+ * The portfolio is organized in a grid
  */
 // import scss
 import portfolio_grid_scss from "./portfolio-grid.scss"
@@ -11,22 +11,35 @@ export default class PortfolioGridView {
   /**
    * Constructor 
    * 
-   * @param {} portfolioElement DOM element that will contain the portfolio
+   * @param {} portfolioElement DOM element that will contain the portfolio (div)
    * @param {*} modelApp model of the app in which the view will find the portfolio datas
    */
   constructor(portfolioElement, modelApp) {
+    // porfolio div
     this.portfolioElement = portfolioElement
+    // app model
     this.modelApp = modelApp
+    // template for the view
     this.template = `
        <div class='portfolio-grid'>
        </div>`
+    // counter for images loaded
     this.imageLoadedCount = 0;
   }
 
+  /**
+   * Position images correctly in the grid
+   * 
+   * When images are loaded in portfolio they recover other images due to a row size fixed to 1 px (grid-auto-rows: 1px in css)
+   * The method calculate the rowspan to correctly display images and apply it to grid item divs
+   */
   positionGridItems() {
-    console.log('positionGridItems')
+
+    // initializations
+
     let grid = this.portfolioElement.querySelector('.portfolio-grid')
     // grid-gap doesn't work in Firefox (value fixed to 4)
+    // grid-gap is the space between lines and columns
     let rowGap = parseInt(getComputedStyle(grid).getPropertyValue('grid-gap')) || 4
     let rowSize = parseInt(getComputedStyle(grid).getPropertyValue('grid-auto-rows'))
 
@@ -38,18 +51,21 @@ export default class PortfolioGridView {
 
 
     let gridItems = grid.querySelectorAll('.portfolio-grid-item')
+    let img
     Array.from(gridItems).forEach(gridItem => {
-      let img = gridItem.querySelector('img')
-      //img.classList.remove("cover")
+      img = gridItem.querySelector('img')
 
-      const rowSpan = Math.ceil(
-        (img.offsetHeight + rowGap) / (rowSize + rowGap)
-      )
+      const rowSpan = Math.ceil(img.offsetHeight / (rowSize + rowGap))
       gridItem.style.setProperty("--row-span", rowSpan)
-      //img.classList.add("cover")
     })
   }
 
+  /**
+   * Display the view
+   * 
+   * Make grid items (div and image) from the model portfolio
+   * Add a listener to resize event to call positionGridItems to correctly size images
+   */
   display() {
     this.imageLoadedCount = 0;
     this.portfolioElement.innerHTML = this.template
@@ -65,24 +81,37 @@ export default class PortfolioGridView {
     window.addEventListener('resize', () => this.positionGridItems())
   }
 
-
+  /**
+   * Construct a grid item from a photo
+   * 
+   * @param {object} photo 
+   */
   makeGridItem(photo) {
+
+    // grid item construction
     let gridItem = document.createElement('div')
     gridItem.classList.add('portfolio-grid-item')
     let img = document.createElement("img");
     img.setAttribute('src', '../../assets/photos/' + photo.file)
-    img.addEventListener('load', () => this.imageLoaded())
-    //img.classList.add('cover')
     gridItem.appendChild(img)
+
+    // add an image loaded listener to count loaded images
+    img.addEventListener('load', () => this.imageLoaded())
+
     return gridItem
   }
 
+  /**
+   * Count images loaded
+   * 
+   * If all images are loaded then position grid items
+   */
   imageLoaded() {
     let imageToLoadCount = this.modelApp.portfolio.length
     this.imageLoadedCount++
-    console.log('this.imageLoadedCount : ', this.imageLoadedCount)
+
     if (this.imageLoadedCount == imageToLoadCount) {
-      setTimeout(() => window.dispatchEvent(new Event('resize')), 50)
+      this.positionGridItems()
     }
   }
 
