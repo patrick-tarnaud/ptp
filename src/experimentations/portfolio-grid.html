@@ -103,19 +103,35 @@
     const gridItems = [];
 
     const positionGridItems = () => {
-      gridItems.forEach(({ item, content }) => {
-        content.classList.remove("cover");
+      console.log('positionGridItems')
+      let gridItems = grid.querySelectorAll('.grid__item')
+      Array.from(gridItems).forEach(gridItem => {
+        let img = gridItem.querySelector('img')
+        img.classList.remove("cover");
 
-        console.log('content.offsetHeight ' + content.offsetHeight)
+        console.log('img.offsetHeight ' + img.offsetHeight)
         console.log('rowGap ' + rowGap)
         console.log('rowSize ' + rowSize)
         const rowSpan = Math.ceil(
-          (content.offsetHeight + rowGap) / (rowSize + rowGap)
+          (img.offsetHeight + rowGap) / (rowSize + rowGap)
         );
         console.log(rowSpan)
-        item.style.setProperty("--row-span", rowSpan);
-        content.classList.add("cover");
-      });
+        gridItem.style.setProperty("--row-span", rowSpan);
+        img.classList.add("cover");
+      })
+      // gridItems.forEach(({ item, content }) => {
+      //   content.classList.remove("cover");
+
+      //   console.log('content.offsetHeight ' + content.offsetHeight)
+      //   console.log('rowGap ' + rowGap)
+      //   console.log('rowSize ' + rowSize)
+      //   const rowSpan = Math.ceil(
+      //     (content.offsetHeight + rowGap) / (rowSize + rowGap)
+      //   );
+      //   console.log(rowSpan)
+      //   item.style.setProperty("--row-span", rowSpan);
+      //   content.classList.add("cover");
+      // });
     };
 
     window.addEventListener("load", positionGridItems);

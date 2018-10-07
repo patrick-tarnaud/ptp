@@ -6,16 +6,14 @@
 
   .portfolio-grid-item {
     grid-row-end: span var(--row-span, 20);
-    
+
     img {
       width: 100%;
       border-radius: 5px;
-    }
-
-    img.cover {
-      height: 100%;
       object-fit: cover;
     }
+
+
   }
 }
 

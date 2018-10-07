@@ -20,13 +20,15 @@ export default class PortfolioGridView {
     this.template = `
        <div class='portfolio-grid'>
        </div>`
+    this.imageLoadedCount = 0;
   }
 
   positionGridItems() {
+    console.log('positionGridItems')
     let grid = this.portfolioElement.querySelector('.portfolio-grid')
     // grid-gap doesn't work in Firefox (value fixed to 4)
-    let gridGap = parseInt(getComputedStyle(grid).getPropertyValue('grid-gap')) || 4
-    let gridRowSize = parseInt(getComputedStyle(grid).getPropertyValue('grid-auto-rows'))
+    let rowGap = parseInt(getComputedStyle(grid).getPropertyValue('grid-gap')) || 4
+    let rowSize = parseInt(getComputedStyle(grid).getPropertyValue('grid-auto-rows'))
 
     /*
     * gridItem loop
@@ -34,30 +36,22 @@ export default class PortfolioGridView {
     *   gridItem rowspan modification 
     */
 
-    let img
-    let rowSpan = 0
+
     let gridItems = grid.querySelectorAll('.portfolio-grid-item')
     Array.from(gridItems).forEach(gridItem => {
-      console.log(gridItem)
-      img = gridItem.querySelector('img')
-      img.classList.remove('cover')
-      console.log(img)
-      console.log('baseURI : ', img.baseURI)
-      console.log('img.height', img.height)
-      console.log('img.offsetHeight', img.offsetHeight)
-      console.log('gridRowSize', gridRowSize)
-      console.log('gridGap', gridGap)
+      let img = gridItem.querySelector('img')
+      //img.classList.remove("cover")
 
-      rowSpan = Math.ceil(img.offsetHeight + gridGap / (gridRowSize + gridGap))
-      console.log('rowSpan', rowSpan)
-
-      gridItem.style.setProperty('--rowspan', rowSpan)
-      img.classList.add('cover')
+      const rowSpan = Math.ceil(
+        (img.offsetHeight + rowGap) / (rowSize + rowGap)
+      )
+      gridItem.style.setProperty("--row-span", rowSpan)
+      //img.classList.add("cover")
     })
-
   }
 
   display() {
+    this.imageLoadedCount = 0;
     this.portfolioElement.innerHTML = this.template
     let grid = this.portfolioElement.querySelector('.portfolio-grid')
 
@@ -68,8 +62,7 @@ export default class PortfolioGridView {
       grid.appendChild(gridItem)
     })
 
-    document.addEventListener('load', this.positionGridItems())
-
+    window.addEventListener('resize', () => this.positionGridItems())
   }
 
 
@@ -78,9 +71,19 @@ export default class PortfolioGridView {
     gridItem.classList.add('portfolio-grid-item')
     let img = document.createElement("img");
     img.setAttribute('src', '../../assets/photos/' + photo.file)
+    img.addEventListener('load', () => this.imageLoaded())
     //img.classList.add('cover')
     gridItem.appendChild(img)
     return gridItem
+  }
+
+  imageLoaded() {
+    let imageToLoadCount = this.modelApp.portfolio.length
+    this.imageLoadedCount++
+    console.log('this.imageLoadedCount : ', this.imageLoadedCount)
+    if (this.imageLoadedCount == imageToLoadCount) {
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50)
+    }
   }
 
 }
