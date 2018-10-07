@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h4 {
+      text-align: center;
+      line-height: 80px;
+      font-weight: normal;
+
+    }
+
+    .masonry {
+      /* Masonry container */
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+
+      font-size: .85em;
+    }
+
+    .item {
+      display: inline-block;
+      background: #fff;
+
+      width: 100%;
+      -webkit-transition: 1s ease all;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+
+    }
+
+    .item img {
+      max-width: 100%;
+
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+
+    @media only screen and (max-width: 320px) {
+      .masonry {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+      }
+    }
+
+    @media only screen and (min-width: 321px) and (max-width: 768px) {
+      .masonry {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+      }
+    }
+
+    @media only screen and (min-width: 769px) and (max-width: 1200px) {
+      .masonry {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+      }
+    }
+
+    @media only screen and (min-width: 1201px) {
+      .masonry {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="masonry">
+
+  </div>
+
+  <script>
+    let data = [
+      {
+        file: '1.jpg'
+      },
+      {
+        file: '2.jpg'
+      },
+      {
+        file: '3.jpg'
+      },
+      {
+        file: '4.jpg'
+      },
+      {
+        file: '5.jpg'
+      },
+      {
+        file: '6.jpg'
+      },
+      {
+        file: '7.jpg'
+      },
+      {
+        file: '8.jpg'
+      },
+      {
+        file: '9.jpg'
+      },
+      {
+        file: '10.jpg'
+      },
+      {
+        file: '11.jpg'
+      },
+      {
+        file: '12.jpg'
+      },
+      {
+        file: '13.jpg'
+      },
+      {
+        file: '14.jpg'
+      },
+      {
+        file: '15.jpg'
+      },
+      {
+        file: '16.jpg'
+      },
+      {
+        file: '17.jpg'
+      },
+      {
+        file: '18.jpg'
+      },
+      {
+        file: '19.jpg'
+      }
+    ]
+
+    console.log(data)
+    let masonry = document.querySelector('.masonry')
+    data.forEach(photo => {
+      let item = document.createElement('div')
+      item.classList.add('item')
+      let img = document.createElement('img')
+      img.setAttribute('src', '../../assets/photos/' + photo.file)
+      item.appendChild(img)
+      masonry.appendChild(item)
+    });
+
+  </script>
+</body>
+
+</html>

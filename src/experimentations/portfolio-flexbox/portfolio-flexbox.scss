@@ -9,6 +9,7 @@
     flex-grow: 1;
     flex-shrink: 1;
     padding: 4px 4px;
+    object-fit: cover;
     &:last-child {
       flex-grow: 0;
       flex-shrink: 0;

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    .grid {
+      display: grid;
+      grid-gap: 4px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-auto-rows: 1px;
+    }
+
+    .grid__item {
+      grid-row-end: span var(--row-span, 20);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+
+    .cover {}
+  </style>
+
+</head>
+
+<body>
+  <div class="grid"></div>
+
+
+
+  <script>
+    let data = [
+      {
+        file: '1.jpg'
+      },
+      {
+        file: '2.jpg'
+      },
+      {
+        file: '3.jpg'
+      },
+      {
+        file: '4.jpg'
+      },
+      {
+        file: '5.jpg'
+      },
+      {
+        file: '6.jpg'
+      },
+      {
+        file: '7.jpg'
+      },
+      {
+        file: '8.jpg'
+      },
+      {
+        file: '9.jpg'
+      },
+      {
+        file: '10.jpg'
+      },
+      {
+        file: '11.jpg'
+      },
+      {
+        file: '12.jpg'
+      },
+      {
+        file: '13.jpg'
+      },
+      {
+        file: '14.jpg'
+      },
+      {
+        file: '15.jpg'
+      },
+      {
+        file: '16.jpg'
+      },
+      {
+        file: '17.jpg'
+      },
+      {
+        file: '18.jpg'
+      },
+      {
+        file: '19.jpg'
+      }
+    ]
+
+    const grid = document.querySelector(".grid");
+    const rowSize = parseInt(getComputedStyle(grid).getPropertyValue("grid-auto-rows"), 10);
+    //const rowGap = parseInt(getComputedStyle(grid).getPropertyValue("grid-gap"), 10);
+    const rowGap = 4;
+    const gridItems = [];
+
+    const positionGridItems = () => {
+      gridItems.forEach(({ item, content }) => {
+        content.classList.remove("cover");
+
+        console.log('content.offsetHeight ' + content.offsetHeight)
+        console.log('rowGap ' + rowGap)
+        console.log('rowSize ' + rowSize)
+        const rowSpan = Math.ceil(
+          (content.offsetHeight + rowGap) / (rowSize + rowGap)
+        );
+        console.log(rowSpan)
+        item.style.setProperty("--row-span", rowSpan);
+        content.classList.add("cover");
+      });
+    };
+
+    window.addEventListener("load", positionGridItems);
+    window.addEventListener("resize", positionGridItems);
+
+
+    // DEMO CODE
+
+
+
+    const generateImages = (grid) => {
+      data.forEach(photo => {
+        let item = document.createElement('div')
+        item.classList.add('grid__item')
+        let content = document.createElement("img");
+        content.setAttribute('src', '../../assets/photos/' + photo.file)
+        item.appendChild(content)
+        grid.appendChild(item)
+        gridItems.push({ item, content });
+      })
+
+
+    }
+
+
+    generateImages(grid)
+
+
+  </script>
+</body>
+
+</html>
