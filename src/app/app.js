@@ -37,14 +37,14 @@ export default class App {
    * 
    * @param {String} pageId 
    */
-  showPage(pageId) {
+  async showPage(pageId) {
     // hides all pages and shows this designed by pageId
     this.hideAllPages();
     let page = document.querySelector(pageId)
     page.classList.add('active')
 
     if (pageId == "#portfolio") {
-      this.portfolioGrid.run()
+      await this.portfolioGrid.run()
     }
   }
 

@@ -10,7 +10,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            plugins: ['@babel/plugin-transform-runtime']
+          }
         }
       },
       {
@@ -51,6 +55,6 @@ module.exports = {
         sourceMap: true // set to true if you want JS source maps
       }),
       new OptimizeCSSAssetsPlugin({})
-    ]
+    ],
   },
 };

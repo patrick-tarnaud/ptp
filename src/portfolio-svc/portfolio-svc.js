@@ -1,4 +1,5 @@
 import { data } from './portfolio-data.js'
+import axios from 'axios'
 
 export default class PortfolioSvc {
 
@@ -6,7 +7,8 @@ export default class PortfolioSvc {
 
   }
 
-  findPhotos() {
-    return data
+  async findPhotos() {
+    let photos = await axios.get('http://localhost:8080/photos')
+    return photos.data
   }
 }

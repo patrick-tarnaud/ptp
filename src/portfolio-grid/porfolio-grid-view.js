@@ -72,7 +72,6 @@ export default class PortfolioGridView {
     let grid = this.portfolioElement.querySelector('.portfolio-grid')
 
     let gridItem
-    let img
     this.modelApp.portfolio.forEach(photo => {
       gridItem = this.makeGridItem(photo)
       grid.appendChild(gridItem)
@@ -92,7 +91,7 @@ export default class PortfolioGridView {
     let gridItem = document.createElement('div')
     gridItem.classList.add('portfolio-grid-item')
     let img = document.createElement("img");
-    img.setAttribute('src', '../../assets/photos/' + photo.file)
+    img.setAttribute('src', '/assets/photos/' + photo.file)
     gridItem.appendChild(img)
 
     // add an image loaded listener to count loaded images

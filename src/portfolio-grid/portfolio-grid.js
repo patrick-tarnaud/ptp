@@ -12,10 +12,10 @@ export default class PortfolioGrid {
     this.portfolioGridView = new PortfolioGridView(portfolioElement, modelApp)
   }
 
-  run() {
+  async run() {
     // call to portofolio service
     let portfolioService = new PortfolioSvc()
-    this.modelApp.portfolio = portfolioService.findPhotos()
+    this.modelApp.portfolio = await portfolioService.findPhotos()
     this.portfolioGridView.display()
 
     return this
