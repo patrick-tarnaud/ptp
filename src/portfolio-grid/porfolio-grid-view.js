@@ -90,9 +90,18 @@ export default class PortfolioGridView {
     // grid item construction
     let gridItem = document.createElement('div')
     gridItem.classList.add('portfolio-grid-item')
+
     let img = document.createElement("img");
     img.setAttribute('src', '/assets/photos/' + photo.file)
     gridItem.appendChild(img)
+
+    let slider = document.createElement('div')
+    slider.classList.add('slider')
+    let title = document.createElement('p')
+    title.classList.add('title')
+    title.innerText = photo.title
+    slider.appendChild(title)
+    gridItem.appendChild(slider)
 
     // add an image loaded listener to count loaded images
     img.addEventListener('load', () => this.imageLoaded())
