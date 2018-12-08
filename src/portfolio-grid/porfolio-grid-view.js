@@ -90,12 +90,31 @@ export default class PortfolioGridView {
     // grid item construction
     let gridItem = document.createElement('div')
     gridItem.classList.add('portfolio-grid-item')
+
     let img = document.createElement("img");
     img.setAttribute('src', '/assets/photos/' + photo.file)
     gridItem.appendChild(img)
 
+    let title = document.createElement('p')
+    title.classList.add('title')
+    title.textContent = photo.title
+    gridItem.appendChild(title)
+
     // add an image loaded listener to count loaded images
     img.addEventListener('load', () => this.imageLoaded())
+
+    gridItem.addEventListener('mouseover', (e) => {
+      let title = e.target.parentElement.querySelector('.title')
+      title.classList.add('visible')
+      console.log(title.textContent)
+    }
+    )
+
+    gridItem.addEventListener('mouseout', (e) => {
+      let title = e.target.parentElement.querySelector('.title')
+      title.classList.remove('visible')
+    }
+    )
 
     return gridItem
   }
