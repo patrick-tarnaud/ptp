@@ -103,8 +103,22 @@ export default class PortfolioGridView {
     slider.appendChild(title)
     gridItem.appendChild(slider)
 
+
     // add an image loaded listener to count loaded images
     img.addEventListener('load', () => this.imageLoaded())
+
+    gridItem.addEventListener('mouseover', (e) => {
+      let title = e.target.parentElement.querySelector('.title')
+      title.classList.add('visible')
+      console.log(title.textContent)
+    }
+    )
+
+    gridItem.addEventListener('mouseout', (e) => {
+      let title = e.target.parentElement.querySelector('.title')
+      title.classList.remove('visible')
+    }
+    )
 
     return gridItem
   }
