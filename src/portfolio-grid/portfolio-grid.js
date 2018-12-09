@@ -17,7 +17,6 @@ export default class PortfolioGrid {
     let portfolioService = new PortfolioSvc()
     this.modelApp.portfolio = await portfolioService.findPhotos()
     this.portfolioGridView.display()
-    console.log(this.modelApp.portfolio)
 
     return this
   }

@@ -103,7 +103,6 @@ export default class PortfolioGridView {
     slider.appendChild(title)
     gridItem.appendChild(slider)
 
-
     // add an image loaded listener to count loaded images
     img.addEventListener('load', () => this.imageLoaded())
 

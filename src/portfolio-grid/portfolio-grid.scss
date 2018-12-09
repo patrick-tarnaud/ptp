@@ -14,20 +14,23 @@
     overflow: hidden;
 
     .slider {
-      top: 100%;
       position: absolute;
+      display: table;
+      top: 100%;
       transition: all .3s ease-out;
       background: rgba($color: #000000, $alpha: 0.5);
       height: 100%;
       width: 100%;
+
     }
     
     &:hover > .slider {
         top:0px;
-      }
+    }
 
     p.title {
-      width: 100%;
+      display: table-cell;
+      vertical-align:middle;
       color: white;
       text-align: center;
       font-size: 1.2em;
